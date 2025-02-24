@@ -28,6 +28,27 @@ public class Main {
 </beans>
  
 
+
+
+// NewFile.xml
+
+	<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   
+    <bean id="com" class="com.velox.Laptop" primary="true"></bean>
+ 
+    <bean id="com1" class="com.velox.Desktop"></bean>
+
+    
+    <bean id="alien" class="com.velox.Alien" autowire="byType">
+       <!-- "In this configuration, we are either using autowiring by type or explicit property injection for the 'com' property in the Alien class. If autowire="byType" is used, Spring will inject the 'Laptop' bean since it is marked as primary. Alternatively, if the <property name="com" ref="com1"> tag is used, we explicitly inject the 'Desktop' bean into the 'com' property of Alien."that time the property tag will work -->
+        <property name="com" ref="com1"></property>
+    </bean>
+</beans>
+
 //Alien.java
 
   package com.velox;
